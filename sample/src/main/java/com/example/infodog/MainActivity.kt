@@ -10,9 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.infodog.router.InfoDogRouter
 import com.example.infodog.ui.theme.InfoDogTheme
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+
+    private val infoDogRouter by inject<InfoDogRouter>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,6 +31,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        infoDogRouter.goToInfoDog(this)
     }
 }
 
