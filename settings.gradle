@@ -14,4 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "InfoDog"
-include ':app'
+include ':sample'
+include ':infodog'
