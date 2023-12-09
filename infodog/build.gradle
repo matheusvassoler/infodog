@@ -27,6 +27,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    def apikeyProperties = new Properties()
+    def file = new File(rootProject.getProjectDir(), "apikey.properties")
+    if (file.exists()) {
+        apikeyProperties.load(new FileInputStream(file))
+        defaultConfig {
+            buildConfigField "String", "API_KEY", apikeyProperties.getProperty('apikey') ?: "\"\""
+        }
+    }
 }
 
 dependencies {
